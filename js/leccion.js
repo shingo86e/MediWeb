@@ -1,3 +1,31 @@
+// Muestra el resultado final del quiz
+function mostrarResultadoFinal() {
+    quizRoot.innerHTML = '';
+    const resultadoDiv = document.createElement('div');
+    resultadoDiv.className = 'resultado-final-quiz';
+    resultadoDiv.innerHTML = `<h2>¡Quiz finalizado!</h2><p>Puntaje: <strong>${puntaje}/${LIMITE_PREGUNTAS}</strong></p>`;
+    let mensaje = '';
+    if (puntaje > 8) {
+        mensaje = '<span style="color:green;font-weight:bold">¡Aprobado!</span>';
+    } else if (puntaje >= 6) {
+        mensaje = '<span style="color:orange;font-weight:bold">Aprobaste pero deberías estudiar más.</span>';
+    } else {
+        mensaje = '<span style="color:red;font-weight:bold">Desaprobado. Usa los botones de las lecciones para estudiar.</span>';
+    }
+    resultadoDiv.innerHTML += `<p>${mensaje}</p>`;
+    // Botón de reintentar
+    const btnReintentar = document.createElement('button');
+    btnReintentar.textContent = 'Reintentar';
+    btnReintentar.style.marginTop = '16px';
+    btnReintentar.onclick = function() {
+        preguntaActual = 0;
+        puntaje = 0;
+        preguntasQuiz = obtenerPreguntasAleatorias(ejerciciosQuiz, LIMITE_PREGUNTAS);
+        mostrarPregunta();
+    };
+    resultadoDiv.appendChild(btnReintentar);
+    quizRoot.appendChild(resultadoDiv);
+}
 // js/leccion.js
 // Muestra contenido educativo y ejercicios según la lección seleccionada
 
@@ -220,6 +248,8 @@ function obtenerPreguntasAleatorias(arr, n) {
 
 let preguntasQuiz = [];
 window.addEventListener('DOMContentLoaded', () => {
+    preguntaActual = 0;
+    puntaje = 0;
     preguntasQuiz = obtenerPreguntasAleatorias(ejerciciosQuiz, LIMITE_PREGUNTAS);
     mostrarPregunta();
 });
@@ -257,15 +287,12 @@ function mostrarPregunta() {
             inputElem.appendChild(opt);
         });
     } else if (ejercicio.tipo === 'arrastrar') {
-        // Interfaz drag & drop
+        // Interfaz drag & drop con botón y validación exclusiva
         inputElem = document.createElement('div');
         inputElem.className = 'dragdrop-container';
-        // Columnas
         const conceptos = ejercicio.parejas.map(p => p.concepto);
         const opciones = ejercicio.parejas.map(p => p.opcion);
-        // Mezclar opciones
         const opcionesMezcladas = opciones.slice().sort(() => Math.random() - 0.5);
-        // Lista de conceptos
         const listaConceptos = document.createElement('div');
         listaConceptos.className = 'dragdrop-list-conceptos';
         conceptos.forEach((concepto, idx) => {
@@ -275,7 +302,6 @@ function mostrarPregunta() {
             item.setAttribute('data-idx', idx);
             listaConceptos.appendChild(item);
         });
-        // Lista de opciones (draggable)
         const listaOpciones = document.createElement('div');
         listaOpciones.className = 'dragdrop-list-opciones';
         opcionesMezcladas.forEach((opcion, idx) => {
@@ -284,14 +310,12 @@ function mostrarPregunta() {
             item.textContent = opcion;
             item.setAttribute('draggable', 'true');
             item.setAttribute('data-idx', idx);
-            // Drag events
             item.addEventListener('dragstart', e => {
                 e.dataTransfer.setData('text/plain', opcion);
                 e.dataTransfer.setData('opcion-idx', idx);
             });
             listaOpciones.appendChild(item);
         });
-        // Drop zones para cada concepto
         const zonasDrop = [];
         conceptos.forEach((concepto, idx) => {
             const zona = document.createElement('div');
@@ -314,7 +338,6 @@ function mostrarPregunta() {
             });
             zonasDrop.push(zona);
         });
-        // Render columnas
         const tabla = document.createElement('table');
         tabla.className = 'dragdrop-table';
         conceptos.forEach((concepto, idx) => {
@@ -327,29 +350,18 @@ function mostrarPregunta() {
             fila.appendChild(celdaDrop);
             tabla.appendChild(fila);
         });
-        // Opciones abajo
         const opcionesTitulo = document.createElement('div');
         opcionesTitulo.textContent = 'Opciones:';
         inputElem.appendChild(tabla);
         inputElem.appendChild(opcionesTitulo);
         inputElem.appendChild(listaOpciones);
-    }
-    preguntaDiv.appendChild(inputElem);
-    // Botón responder
-    const btn = document.createElement('button');
-    btn.textContent = 'Responder';
-    btn.onclick = function() {
-        let respuestaUsuario;
-        if (ejercicio.tipo === 'completar') {
-            respuestaUsuario = inputElem.value;
-        } else if (ejercicio.tipo === 'vf') {
-            respuestaUsuario = inputElem.value === 'true';
-        } else if (ejercicio.tipo === 'seleccion') {
-            respuestaUsuario = parseInt(inputElem.value);
-        } else if (ejercicio.tipo === 'arrastrar') {
-            // Leer las parejas seleccionadas por el usuario
-            respuestaUsuario = [];
-            const zonasDrop = inputElem.querySelectorAll('.dragdrop-dropzone');
+
+        // Botón exclusivo para validar arrastrar
+        const btnArrastrar = document.createElement('button');
+        btnArrastrar.textContent = 'Responder';
+        btnArrastrar.style.marginTop = '12px';
+        btnArrastrar.onclick = function() {
+            let respuestaUsuario = [];
             let incompleto = false;
             zonasDrop.forEach((zona, idx) => {
                 const concepto = ejercicio.parejas[idx].concepto;
@@ -362,60 +374,90 @@ function mostrarPregunta() {
                 advertencia.style.color = 'orange';
                 advertencia.style.marginTop = '10px';
                 advertencia.innerHTML = '<strong>Debes emparejar todas las opciones antes de responder.</strong>';
-                preguntaDiv.appendChild(advertencia);
+                inputElem.appendChild(advertencia);
                 return;
             }
-        }
-        // Validar y mostrar feedback
-    const feedback = mostrarFeedback(ejercicio.respuesta, respuestaUsuario, ejercicio.wiki, ejercicio.tipo, ejercicio);
-        preguntaDiv.appendChild(feedback);
-        btn.disabled = true;
-        // Sumar puntaje si es correcta
-        let esCorrecta;
-        if (ejercicio.tipo === 'completar' || ejercicio.tipo === 'vf') {
-            esCorrecta = String(respuestaUsuario).trim().toLowerCase() === String(ejercicio.respuesta).trim().toLowerCase();
-        } else if (ejercicio.tipo === 'seleccion') {
-            esCorrecta = respuestaUsuario === ejercicio.respuesta;
-        } else if (ejercicio.tipo === 'arrastrar') {
-            // Comparar por pares, ignorando el orden
-            esCorrecta = respuestaUsuario.length === ejercicio.respuesta.length &&
+            // Validación robusta (ignora el orden)
+            const paresCorrectos = ejercicio.parejas;
+            const esCorrecta = respuestaUsuario.length === paresCorrectos.length &&
                 respuestaUsuario.every((parUsuario) => {
-                    const parCorrecto = ejercicio.respuesta.find(
-                        (par) => par.concepto === parUsuario.concepto && par.opcion === parUsuario.opcion
+                    return paresCorrectos.some(
+                        (parCorrecto) => parCorrecto.concepto === parUsuario.concepto && parCorrecto.opcion === parUsuario.opcion
                     );
-                    return !!parCorrecto;
                 });
-        }
-        if (esCorrecta) puntaje++;
-        // Botón siguiente pregunta
-        const btnSiguiente = document.createElement('button');
-        btnSiguiente.textContent = preguntaActual + 1 < LIMITE_PREGUNTAS ? 'Siguiente pregunta' : 'Ver resultado';
-        btnSiguiente.style.marginLeft = '12px';
-        btnSiguiente.onclick = function() {
-            preguntaActual++;
-            mostrarPregunta();
+            // Feedback
+            let feedbackDiv;
+            if (esCorrecta) {
+                feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'feedback-quiz';
+                feedbackDiv.innerHTML = '<span style="color:green;font-weight:bold">¡Correcto!</span>';
+            } else {
+                feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'feedback-quiz';
+                let respuestaMostrada = '<ul style="margin:8px 0">';
+                paresCorrectos.forEach(par => {
+                    respuestaMostrada += `<li><strong>${par.concepto}</strong> → <span style='color:blue'>${par.opcion}</span></li>`;
+                });
+                respuestaMostrada += '</ul>';
+                feedbackDiv.innerHTML = `<span style="color:red;font-weight:bold">Incorrecto, la respuesta correcta es:</span> ${respuestaMostrada}` +
+                    '<br><button onclick="window.open(\'' + ejercicio.wiki + '\', \'_blank\')" style="margin-top:8px">Estudiar en Wikipedia</button>';
+            }
+            inputElem.appendChild(feedbackDiv);
+            btnArrastrar.disabled = true;
+            // Botón siguiente pregunta
+            const btnSiguiente = document.createElement('button');
+            btnSiguiente.textContent = preguntaActual + 1 < LIMITE_PREGUNTAS ? 'Siguiente pregunta' : 'Ver resultado';
+            btnSiguiente.style.marginLeft = '12px';
+            btnSiguiente.onclick = function() {
+                preguntaActual++;
+                mostrarPregunta();
+            };
+            inputElem.appendChild(btnSiguiente);
         };
-        preguntaDiv.appendChild(btnSiguiente);
-    };
-    preguntaDiv.appendChild(btn);
-    quizRoot.appendChild(preguntaDiv);
-}
-
-function mostrarResultadoFinal() {
-    quizRoot.innerHTML = '';
-    const resultadoDiv = document.createElement('div');
-    resultadoDiv.className = 'resultado-final-quiz';
-    resultadoDiv.innerHTML = `<h2>¡Quiz finalizado!</h2><p>Puntaje: <strong>${puntaje}/${LIMITE_PREGUNTAS}</strong></p>`;
-    let mensaje = '';
-    if (puntaje > 8) {
-        mensaje = '<span style="color:green;font-weight:bold">¡Aprobado!</span>';
-    } else if (puntaje >= 6) {
-        mensaje = '<span style="color:orange;font-weight:bold">Aprobaste pero deberías estudiar más.</span>';
-    } else {
-        mensaje = '<span style="color:red;font-weight:bold">Desaprobado. Usa los botones de las lecciones para estudiar.</span>';
+        inputElem.appendChild(btnArrastrar);
     }
-    resultadoDiv.innerHTML += `<p>${mensaje}</p>`;
-    quizRoot.appendChild(resultadoDiv);
+    preguntaDiv.appendChild(inputElem);
+    // Botón responder
+    const btn = document.createElement('button');
+    btn.textContent = 'Responder';
+    // Botón responder solo para los tipos que no son arrastrar
+    if (ejercicio.tipo !== 'arrastrar') {
+        const btn = document.createElement('button');
+        btn.textContent = 'Responder';
+        btn.onclick = function() {
+            let respuestaUsuario;
+            if (ejercicio.tipo === 'completar') {
+                respuestaUsuario = inputElem.value;
+            } else if (ejercicio.tipo === 'vf') {
+                respuestaUsuario = inputElem.value === 'true';
+            } else if (ejercicio.tipo === 'seleccion') {
+                respuestaUsuario = parseInt(inputElem.value);
+            }
+            // Validar y mostrar feedback
+            const feedback = mostrarFeedback(ejercicio.respuesta, respuestaUsuario, ejercicio.wiki, ejercicio.tipo, ejercicio);
+            preguntaDiv.appendChild(feedback);
+            btn.disabled = true;
+            // Sumar puntaje si es correcta
+            let esCorrecta = false;
+            if (ejercicio.tipo === 'completar' || ejercicio.tipo === 'vf') {
+                esCorrecta = String(respuestaUsuario).trim().toLowerCase() === String(ejercicio.respuesta).trim().toLowerCase();
+            } else if (ejercicio.tipo === 'seleccion') {
+                esCorrecta = respuestaUsuario === ejercicio.respuesta;
+            }
+            if (esCorrecta) puntaje++;
+            // Botón siguiente pregunta
+            const btnSiguiente = document.createElement('button');
+            btnSiguiente.textContent = preguntaActual + 1 < LIMITE_PREGUNTAS ? 'Siguiente pregunta' : 'Ver resultado';
+            btnSiguiente.style.marginLeft = '12px';
+            btnSiguiente.onclick = function() {
+                preguntaActual++;
+                mostrarPregunta();
+            };
+            preguntaDiv.appendChild(btnSiguiente);
+        };
+        preguntaDiv.appendChild(btn);
+    }
+    quizRoot.appendChild(preguntaDiv);
 }
 // Iniciar el quiz automáticamente al cargar la página
 window.addEventListener('DOMContentLoaded', mostrarPregunta);
