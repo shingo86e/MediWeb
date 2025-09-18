@@ -1,3 +1,18 @@
+/* Botón Wikipedia feedback quiz */
+.btn-wikipedia {
+  background: #2196f3;
+  color: #fff;
+  border: 1px solid #1976d2;
+  border-radius: 6px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 8px;
+  transition: background 0.2s;
+}
+.btn-wikipedia:hover {
+  background: #1565c0;
+}
 /* Estilos para drag & drop en el quiz */
 .dragdrop-container {
   margin: 16px 0;

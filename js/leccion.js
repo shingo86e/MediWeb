@@ -224,8 +224,8 @@ function mostrarFeedback(respuestaCorrecta, respuestaUsuario, wikiUrl, tipoPregu
         } else {
             respuestaMostrada = respuestaCorrecta;
         }
-        feedbackDiv.innerHTML = `<span style="color:red;font-weight:bold">Incorrecto, la respuesta correcta es:</span> ${respuestaMostrada}` +
-            '<br><button onclick="window.open(\'' + wikiUrl + '\', \'_blank\')" style="margin-top:8px">Estudiar en Wikipedia</button>';
+            feedbackDiv.innerHTML = `<span style="color:red;font-weight:bold">Incorrecto, la respuesta correcta es:</span> ${respuestaMostrada}` +
+                '<br><button class="btn-wikipedia" onclick="window.open(\'' + wikiUrl + '\', \'_blank\')">Estudiar en Wikipedia</button>';
     }
     return feedbackDiv;
 }
