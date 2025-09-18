@@ -1,3 +1,6 @@
+// Sonidos de feedback (archivos locales en carpeta sonidos)
+const audioCorrecto = new Audio('../sonidos/correcto.mp3');
+const audioIncorrecto = new Audio('../sonidos/incorrecto.mp3');
 // Muestra el resultado final del quiz
 function mostrarResultadoFinal() {
     quizRoot.innerHTML = '';
@@ -200,7 +203,9 @@ function mostrarFeedback(respuestaCorrecta, respuestaUsuario, wikiUrl, tipoPregu
     feedbackDiv.className = 'feedback-quiz';
     if (esCorrecta) {
         feedbackDiv.innerHTML = '<span style="color:green;font-weight:bold">¡Correcto!</span>';
+        try { audioCorrecto.currentTime = 0; audioCorrecto.play(); } catch(e){}
     } else {
+        try { audioIncorrecto.currentTime = 0; audioIncorrecto.play(); } catch(e){}
         let respuestaMostrada = '';
         if (tipoPregunta === 'seleccion' && Array.isArray(respuestaCorrecta)) {
             respuestaMostrada = ejercicio.opciones[respuestaCorrecta];
