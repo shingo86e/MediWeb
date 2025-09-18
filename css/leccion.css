@@ -1,0 +1,48 @@
+/* Estilos para drag & drop en el quiz */
+.dragdrop-container {
+  margin: 16px 0;
+}
+.dragdrop-table {
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+.dragdrop-table td {
+  border: 1px solid #bbb;
+  padding: 8px 12px;
+  min-width: 120px;
+  background: #f9f9f9;
+}
+.dragdrop-list-opciones {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.dragdrop-item {
+  background: #e3e3ff;
+  border: 1px solid #888;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: grab;
+  user-select: none;
+  transition: box-shadow 0.2s;
+}
+.dragdrop-item.opcion:active {
+  box-shadow: 0 0 8px #6a6aff;
+}
+.dragdrop-dropzone {
+  min-height: 32px;
+  background: #f0f0ff;
+  border: 2px dashed #aaa;
+  border-radius: 6px;
+  text-align: center;
+  line-height: 32px;
+  color: #888;
+  font-size: 15px;
+  margin: 2px 0;
+  transition: background 0.2s;
+}
+.dragdrop-dropzone[data-opcion] {
+  color: #222;
+  background: #d6ffd6;
+  border-color: #6a6aff;
+}
