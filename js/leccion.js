@@ -429,9 +429,10 @@ function mostrarPregunta() {
     btn.textContent = 'Responder';
     // Botón responder solo para los tipos que no son arrastrar
     if (ejercicio.tipo !== 'arrastrar') {
-        const btn = document.createElement('button');
-        btn.textContent = 'Responder';
-        btn.onclick = function() {
+    const btn = document.createElement('button');
+    btn.className = 'btn-responder';
+    btn.innerHTML = 'Responder <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+    btn.onclick = function() {
             let respuestaUsuario;
             if (ejercicio.tipo === 'completar') {
                 respuestaUsuario = inputElem.value;
