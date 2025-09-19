@@ -42,145 +42,140 @@ const contenidoLeccion = document.getElementById('contenido-leccion');
 
 // Ejercicios para el quiz
 const ejerciciosQuiz = [
-{ tipo: 'completar', pregunta: "¿Qué órgano absorbe la mayoría de los nutrientes?", respuesta: "intestino delgado", wiki: "https://es.wikipedia.org/wiki/Intestino_delgado" },
-{ tipo: 'completar', pregunta: "¿Qué parte del sistema digestivo absorbe agua y forma las heces?", respuesta: "intestino grueso", wiki: "https://es.wikipedia.org/wiki/Intestino_grueso" },
-{ tipo: 'completar', pregunta: "¿Qué enzima digiere las proteínas en el estómago?", respuesta: "pepsina", wiki: "https://es.wikipedia.org/wiki/Pepsina" },
-{ tipo: 'completar', pregunta: "¿Qué órgano secreta enzimas digestivas y regula el azúcar en sangre?", respuesta: "páncreas", wiki: "https://es.wikipedia.org/wiki/Páncreas" },
-{ tipo: 'completar', pregunta: "¿Qué parte del estómago se conecta con el intestino delgado?", respuesta: "píloro", wiki: "https://es.wikipedia.org/wiki/Píloro" },
-{ tipo: 'completar', pregunta: "¿Qué tipo de músculo permite el movimiento del bolo alimenticio?", respuesta: "músculo liso", wiki: "https://es.wikipedia.org/wiki/Músculo_liso" },
-{ tipo: 'completar', pregunta: "¿Qué órgano almacena la orina?", respuesta: "vejiga", wiki: "https://es.wikipedia.org/wiki/Vejiga" },
-{ tipo: 'completar', pregunta: "¿Qué órgano produce los óvulos?", respuesta: "ovarios", wiki: "https://es.wikipedia.org/wiki/Ovario" },
-{ tipo: 'completar', pregunta: "¿Qué estructura transporta la orina desde los riñones a la vejiga?", respuesta: "uréteres", wiki: "https://es.wikipedia.org/wiki/Uréter" },
-{ tipo: 'completar', pregunta: "¿Qué estructura permite la salida de la orina al exterior?", respuesta: "uretra", wiki: "https://es.wikipedia.org/wiki/Uretra" },
-{ tipo: 'completar', pregunta: "¿Dónde ocurre la fecundación normalmente?", respuesta: "trompas de falopio", wiki: "https://es.wikipedia.org/wiki/Trompa_de_Falopio" },
-{ tipo: 'completar', pregunta: "¿Qué estructura conecta el útero con el exterior?", respuesta: "vagina", wiki: "https://es.wikipedia.org/wiki/Vagina" },
-{ tipo: 'completar', pregunta: "¿Qué órgano filtra la sangre para formar orina?", respuesta: "riñón", wiki: "https://es.wikipedia.org/wiki/Riñón" },
-{ tipo: 'completar', pregunta: "¿Qué hormona regula el ciclo menstrual?", respuesta: "progesterona", wiki: "https://es.wikipedia.org/wiki/Progesterona" },
-{ tipo: 'completar', pregunta: "¿Qué parte del sistema nervioso regula funciones involuntarias como la respiración y el ritmo cardíaco?", respuesta: "tronco encefálico", wiki: "https://es.wikipedia.org/wiki/Tronco_encefálico" },
-{ tipo: 'completar', pregunta: "¿Qué parte del ojo regula la cantidad de luz que entra?", respuesta: "iris", wiki: "https://es.wikipedia.org/wiki/Iris_(anatomía)" },
-{ tipo: 'completar', pregunta: "¿Qué estructura del oído convierte las vibraciones en impulsos nerviosos?", respuesta: "cóclea", wiki: "https://es.wikipedia.org/wiki/Cóclea" },
-{ tipo: 'completar', pregunta: "¿Qué parte de la lengua detecta sabores dulces?", respuesta: "papilas gustativas en la punta", wiki: "https://es.wikipedia.org/wiki/Lengua_(anatomía)" },
-{ tipo: 'completar', pregunta: "¿Qué órgano es responsable del sentido del equilibrio?", respuesta: "oído interno", wiki: "https://es.wikipedia.org/wiki/Oído_interno" },
-{ tipo: 'completar', pregunta: "¿Qué parte del ojo enfoca la luz sobre la retina?", respuesta: "cristalino", wiki: "https://es.wikipedia.org/wiki/Cristalino" },
-{ tipo: 'completar', pregunta: "¿Qué nervio transmite la información visual al cerebro?", respuesta: "nervio óptico", wiki: "https://es.wikipedia.org/wiki/Nervio_óptico" },
-{ tipo: 'completar', pregunta: "¿Qué parte del oído capta las ondas sonoras?", respuesta: "pabellón auricular", wiki: "https://es.wikipedia.org/wiki/Tímpano" },
-{ tipo: 'completar', pregunta: "¿Qué estructura protege el globo ocular?", respuesta: "córnea", wiki: "https://es.wikipedia.org/wiki/Córnea" },
-{ tipo: 'completar', pregunta: "¿Cuántos pares de nervios craneales tiene el cuerpo humano?", respuesta: "12 pares", wiki: "https://es.wikipedia.org/wiki/Nervio_craneal" },
-{ tipo: 'completar', pregunta: "¿Qué neurotransmisor está relacionado con el placer y la recompensa?", respuesta: "dopamina", wiki: "https://es.wikipedia.org/wiki/Dopamina" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte del cerebro controla el equilibrio?", opciones: ["Corteza prefrontal", "Cerebelo", "Tronco encefálico", "Hipotálamo"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Cerebelo" },
-{ tipo: 'seleccion', pregunta: "¿Qué órgano produce los espermatozoides?", opciones: ["Ovarios", "Testículos", "Vesícula biliar", "Riñón"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Testículo" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte del ojo regula la cantidad de luz que entra?", opciones: ["Retina", "Iris", "Córnea", "Cristalino"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Iris_(anatomía)" },
-{ tipo: 'seleccion', pregunta: "¿Qué estructura del oído convierte las vibraciones en impulsos nerviosos?", opciones: ["Cóclea", "Martillo", "Yunque", "Estribo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Cóclea" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte de la lengua detecta sabores dulces?", opciones: ["Papilas gustativas en la punta", "Papilas gustativas en la base", "Papilas gustativas en los lados", "Papilas gustativas en el centro"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Lengua_(anatomía)" },
-{ tipo: 'seleccion', pregunta: "¿Qué órgano es responsable del sentido del equilibrio?", opciones: ["Oído interno", "Oído externo", "Oído medio", "Cerebelo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Oído_interno" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte del ojo enfoca la luz sobre la retina?", opciones: ["Cristalino", "Córnea", "Iris", "Retina"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Cristalino" },
-{ tipo: 'seleccion', pregunta: "¿Qué nervio transmite la información visual al cerebro?", opciones: ["Nervio óptico", "Nervio auditivo", "Nervio olfatorio", "Nervio facial"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Nervio_óptico" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte del oído capta las ondas sonoras?", opciones: ["Pabellón auricular", "Cóclea", "Tímpano", "Martillo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Tímpano" },
-{ tipo: 'seleccion', pregunta: "¿Qué estructura protege el globo ocular?", opciones: ["Córnea", "Iris", "Retina", "Cristalino"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Córnea" },
-{ tipo: 'seleccion', pregunta: "¿Cuántos pares de nervios craneales tiene el cuerpo humano?", opciones: ["10 pares", "12 pares", "14 pares", "8 pares"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Nervio_craneal" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte del cerebro está encargada del razonamiento y el pensamiento complejo?", opciones: ["Corteza prefrontal", "Cerebelo", "Tronco encefálico", "Hipotálamo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Corteza_prefrontal" },
-{ tipo: 'seleccion', pregunta: "¿Qué neurotransmisor está relacionado con el placer y la recompensa?", opciones: ["Serotonina", "Dopamina", "Adrenalina", "Noradrenalina"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Dopamina" },
-{ tipo: 'seleccion', pregunta: "¿Qué estructura protege al encéfalo?", opciones: ["Cráneo", "Columna", "Costillas", "Mandíbula"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Cráneo" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte del sistema nervioso se encarga de la respuesta de lucha o huida?", opciones: ["Sistema nervioso simpático", "Sistema nervioso parasimpático", "Sistema nervioso central", "Sistema nervioso periférico"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Sistema_nervioso_simpatético" },
-{ tipo: 'seleccion', pregunta: "¿Qué líquido protege al cerebro y la médula espinal?", opciones: ["Líquido cefalorraquídeo", "Sangre", "Líquido sinovial", "Linfático"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Líquido_cefalorraquídeo" },
-{ tipo: 'seleccion', pregunta: "¿Cuál es el órgano principal del sistema circulatorio?", opciones: ["Corazón", "Pulmón", "Riñón", "Hígado"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Corazón" },
-{ tipo: 'seleccion', pregunta: "¿Qué vasos sanguíneos llevan sangre del corazón al resto del cuerpo?", opciones: ["Arterias", "Venas", "Capilares", "Linfa"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Arteria" },
-{ tipo: 'seleccion', pregunta: "¿Qué parte del sistema nervioso regula funciones involuntarias como la respiración y el ritmo cardíaco?", opciones: ["Tronco encefálico", "Corteza prefrontal", "Cerebelo", "Hipotálamo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Tronco_encefálico" },
-{ tipo: 'seleccion', pregunta: "¿Qué órgano almacena la orina?", opciones: ["Vejiga", "Riñón", "Hígado", "Pulmón"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Vejiga" },
-{ tipo: 'seleccion', pregunta: "¿Qué órgano produce los óvulos?", opciones: ["Ovarios", "Testículos", "Vesícula biliar", "Riñón"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Ovario" },
-{ tipo: 'seleccion', pregunta: "¿Qué estructura transporta la orina desde los riñones a la vejiga?", opciones: ["Uréteres", "Uretra", "Vejiga", "Intestino"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Uréter" },
-{ tipo: 'seleccion', pregunta: "¿Qué estructura permite la salida de la orina al exterior?", opciones: ["Uretra", "Uréteres", "Vejiga", "Intestino"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Uretra" },
-{ tipo: 'seleccion', pregunta: "¿Dónde ocurre la fecundación normalmente?", opciones: ["Trompas de falopio", "Útero", "Vagina", "Ovarios"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Trompa_de_Falopio" },
-{ tipo: 'arrastrar', pregunta: "Arrastra la función al órgano correspondiente:", parejas: [
-    { concepto: "Filtra la sangre", opcion: "Riñón" },
-    { concepto: "Produce bilis", opcion: "Hígado" },
-    { concepto: "Permite la respiración", opcion: "Pulmón" }
-], wiki: "https://es.wikipedia.org/wiki/Órgano" },
-{ tipo: 'arrastrar', pregunta: "Arrastra el hueso al lugar correcto:", parejas: [
-    { concepto: "Fémur", opcion: "Pierna" },
-    { concepto: "Radio", opcion: "Brazo" },
-    { concepto: "Cráneo", opcion: "Cabeza" }
-], wiki: "https://es.wikipedia.org/wiki/Hueso" },
-{ tipo: 'arrastrar', pregunta: "Arrastra la hormona a su función:", parejas: [
-    { concepto: "Insulina", opcion: "Regula glucosa" },
-    { concepto: "Adrenalina", opcion: "Respuesta de estrés" },
-    { concepto: "Progesterona", opcion: "Ciclo menstrual" }
-], wiki: "https://es.wikipedia.org/wiki/Hormona" },
-{ tipo: 'arrastrar', pregunta: "Arrastra el tejido a su función:", parejas: [
-    { concepto: "Muscular", opcion: "Movimiento" },
-    { concepto: "Epitelial", opcion: "Protección" },
-    { concepto: "Conectivo", opcion: "Soporte" }
-], wiki: "https://es.wikipedia.org/wiki/Tejido_(biología)" },
-{ tipo: 'arrastrar', pregunta: "Arrastra el sistema a su función:", parejas: [
-    { concepto: "Digestivo", opcion: "Absorción de nutrientes" },
-    { concepto: "Respiratorio", opcion: "Intercambio de gases" },
-    { concepto: "Circulatorio", opcion: "Transporte de sangre" }
-], wiki: "https://es.wikipedia.org/wiki/Sistema_(anatom%C3%ADa)" },
-{ tipo: 'arrastrar', pregunta: "Arrastra el órgano a su sistema:", parejas: [
-    { concepto: "Corazón", opcion: "Circulatorio" },
-    { concepto: "Pulmón", opcion: "Respiratorio" },
-    { concepto: "Estómago", opcion: "Digestivo" }
-], wiki: "https://es.wikipedia.org/wiki/Órgano" },
-{ tipo: 'arrastrar', pregunta: "Arrastra la célula a su función:", parejas: [
-    { concepto: "Glóbulo rojo", opcion: "Transporte de oxígeno" },
-    { concepto: "Neurona", opcion: "Transmisión de impulsos" },
-    { concepto: "Célula muscular", opcion: "Contracción" }
-], wiki: "https://es.wikipedia.org/wiki/Cuerpo_humano" },
-{ tipo: 'arrastrar', pregunta: "Arrastra el líquido a su función:", parejas: [
-    { concepto: "Sangre", opcion: "Transporte de nutrientes" },
-    { concepto: "Linfático", opcion: "Defensa" },
-    { concepto: "Cefalorraquídeo", opcion: "Protección neural" }
-], wiki: "https://es.wikipedia.org/wiki/Líquido" },
-{ tipo: 'arrastrar', pregunta: "Arrastra el músculo a su tipo:", parejas: [
-    { concepto: "Cardíaco", opcion: "Involuntario" },
-    { concepto: "Esquelético", opcion: "Voluntario" },
-    { concepto: "Liso", opcion: "Involuntario" }
-], wiki: "https://es.wikipedia.org/wiki/Músculo" },
-{ tipo: 'arrastrar', pregunta: "Arrastra el órgano a su función principal:", parejas: [
-    { concepto: "Riñón", opcion: "Filtración" },
-    { concepto: "Hígado", opcion: "Metabolismo" },
-    { concepto: "Pulmón", opcion: "Respiración" }
-], wiki: "https://es.wikipedia.org/wiki/Órgano" },
-{ tipo: 'vf', pregunta: "La insulina se produce en el hígado.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Insulina" },
-{ tipo: 'vf', pregunta: "El corazón tiene cuatro cavidades.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Corazón" },
-{ tipo: 'vf', pregunta: "El píloro conecta el estómago con el intestino delgado.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Píloro" },
-{ tipo: 'vf', pregunta: "El músculo liso es voluntario.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Músculo_liso" },
-{ tipo: 'vf', pregunta: "La córnea protege el globo ocular.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Córnea" },
-{ tipo: 'vf', pregunta: "El riñón produce bilis.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Riñón" },
-{ tipo: 'vf', pregunta: "El hígado es el órgano más grande del cuerpo humano.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Hígado" },
-{ tipo: 'vf', pregunta: "Los glóbulos rojos se producen en la médula ósea.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Médula_ósea" },
-{ tipo: 'vf', pregunta: "El intestino delgado es más corto que el intestino grueso.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Intestino_delgado" },
-{ tipo: 'vf', pregunta: "La tráquea se encuentra delante del esófago.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Tráquea" },
-{ tipo: 'vf', pregunta: "Los riñones tienen forma de frijol.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Riñón" },
-{ tipo: 'vf', pregunta: "El páncreas es parte del sistema endocrino y digestivo.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Páncreas" },
-{ tipo: 'vf', pregunta: "La vesícula biliar almacena bilis.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Vesícula_biliar" },
-{ tipo: 'vf', pregunta: "El bazo es responsable de producir insulina.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Bazo" },
-{ tipo: 'vf', pregunta: "Las arterias llevan sangre oxigenada, y las venas llevan sangre desoxigenada.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sangre" },
-{ tipo: 'vf', pregunta: "El corazón humano tiene tres aurículas.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Corazón_humano" },
-{ tipo: 'vf', pregunta: "La piel es el órgano más grande del sistema inmunológico.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Piel" },
-{ tipo: 'vf', pregunta: "Los músculos estriados son involuntarios.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Músculo_estriado" },
-{ tipo: 'vf', pregunta: "El líquido sinovial lubrica las articulaciones.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Líquido_sinovial" },
-{ tipo: 'vf', pregunta: "La médula espinal está protegida por la columna vertebral.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Médula_espinal" },
-{ tipo: 'vf', pregunta: "El sistema linfático ayuda a mantener el equilibrio de líquidos en el cuerpo.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sistema_linfático" },
-{ tipo: 'vf', pregunta: "La hormona adrenalina se produce en el páncreas.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Adrenalina" },
-{ tipo: 'vf', pregunta: "El aparato respiratorio humano tiene una capacidad pulmonar promedio de 6 litros.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sistema_respiratorio_humano" },
-{ tipo: 'vf', pregunta: "La función principal de los glóbulos blancos es transportar oxígeno.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Glóbulo_blanco" },
-{ tipo: 'vf', pregunta: "El hígado desintoxica sustancias nocivas en el cuerpo.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Hígado" },
-{ tipo: 'vf', pregunta: "La principal función de los riñones es la producción de hormonas.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Riñón" },
-{ tipo: 'vf', pregunta: "El sistema esquelético humano está compuesto por 206 huesos en la edad adulta.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sistema_esquelético_humano" },
-{ tipo: 'vf', pregunta: "La principal función de los músculos es generar movimiento.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Músculo" },
-{ tipo: 'vf', pregunta: "El corazón tiene válvulas que aseguran el flujo sanguíneo en una sola dirección.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Corazón" },
-{ tipo: 'vf', pregunta: "La sangre oxigenada es de color rojo brillante, y la sangre desoxigenada es de color rojo oscuro.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sangre" },
-{ tipo: 'vf', pregunta: "El cartílago es un tejido más duro y denso que el hueso.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Cartílago" },
-{ tipo: 'vf', pregunta: "Los nervios son responsables de transmitir impulsos eléctricos en el cuerpo.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Nervio" },
-{ tipo: 'vf', pregunta: "La lengua es el músculo más fuerte del cuerpo humano en relación a su tamaño.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Lengua_(anatomía)" },
-{ tipo: 'vf', pregunta: "El sentido del olfato se debe a la acción de las papilas gustativas.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Olfato" },
-{ tipo: 'vf', pregunta: "La principal función de los pulmones es la deoxigenar la sangre.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Pulmón" },
-{ tipo: 'vf', pregunta: "El líquido cefalorraquídeo rodea y protege el cerebro y la médula espinal.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Líquido_cefalorraquídeo" },
-{ tipo: 'vf', pregunta: "La principal función del bazo es filtrar la sangre.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Bazo" },
-{ tipo: 'vf', pregunta: "Los huesos del cráneo son móviles para permitir el crecimiento del cerebro.", respuesta: false, wiki: "https://es.wikipedia.org/wiki/Suturas_del_cr%C3%A1neo" },
-{ tipo: 'vf', pregunta: "El sistema nervioso central está compuesto por el cerebro y la médula espinal.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sistema_nervioso_central" },
-{ tipo: 'vf', pregunta: "La principal función de la tiroides es regular el metabolismo.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Tiroides" }
+{ tipo: 'completar', pregunta: "¿Qué porción del intestino delgado se continúa con el íleon?", respuesta: "yeyuno", wiki: "https://es.wikipedia.org/wiki/Intestino_delgado" },
+  { tipo: 'completar', pregunta: "¿Qué segmento del intestino grueso se encuentra entre el ciego y el colon transverso?", respuesta: "colon ascendente", wiki: "https://es.wikipedia.org/wiki/Colon_ascendente" },
+  { tipo: 'completar', pregunta: "¿Qué estructura conecta el estómago con el duodeno?", respuesta: "píloro", wiki: "https://es.wikipedia.org/wiki/Píloro" },
+  { tipo: 'completar', pregunta: "¿Qué conducto conecta la pelvis renal con la vejiga urinaria?", respuesta: "uréter", wiki: "https://es.wikipedia.org/wiki/Uréter" },
+  { tipo: 'completar', pregunta: "¿Qué estructura marca el inicio del intestino grueso?", respuesta: "ciego", wiki: "https://es.wikipedia.org/wiki/Ciego" },
+  { tipo: 'completar', pregunta: "¿Qué parte del estómago se relaciona con el diafragma y el fundus gástrico?", respuesta: "cardias", wiki: "https://es.wikipedia.org/wiki/Cardias" },
+  { tipo: 'completar', pregunta: "¿Qué estructura del sistema urinario se ubica en la pelvis menor y actúa como reservorio?", respuesta: "vejiga urinaria", wiki: "https://es.wikipedia.org/wiki/Vejiga" },
+  { tipo: 'completar', pregunta: "¿Qué conducto atraviesa la próstata en el varón?", respuesta: "uretra prostática", wiki: "https://es.wikipedia.org/wiki/Uretra" },
+  { tipo: 'completar', pregunta: "¿Qué estructura conecta el útero con la vulva?", respuesta: "vagina", wiki: "https://es.wikipedia.org/wiki/Vagina" },
+  { tipo: 'completar', pregunta: "¿Qué parte del útero se proyecta hacia la vagina y contiene el orificio cervical?", respuesta: "cuello uterino", wiki: "https://es.wikipedia.org/wiki/Cérvix" },
+  { tipo: 'completar', pregunta: "¿Qué estructura del oído interno participa en el equilibrio?", respuesta: "aparato vestibular", wiki: "https://es.wikipedia.org/wiki/Oído_interno" },
+  { tipo: 'completar', pregunta: "¿Qué estructura del ojo se encarga de enfocar la luz sobre la retina?", respuesta: "cristalino", wiki: "https://es.wikipedia.org/wiki/Cristalino" },
+  { tipo: 'completar', pregunta: "¿Qué nervio craneal atraviesa el conducto óptico?", respuesta: "nervio óptico", wiki: "https://es.wikipedia.org/wiki/Nervio_óptico" },
+  { tipo: 'completar', pregunta: "¿Qué estructura del oído externo capta las ondas sonoras?", respuesta: "pabellón auricular", wiki: "https://es.wikipedia.org/wiki/Oído_externo" },
+  { tipo: 'completar', pregunta: "¿Qué estructura transparente protege el globo ocular y permite el paso de luz?", respuesta: "córnea", wiki: "https://es.wikipedia.org/wiki/Córnea" },
+  { tipo: 'completar', pregunta: "¿Cuántos pares de nervios craneales emergen del tronco encefálico?", respuesta: "10 pares", wiki: "https://es.wikipedia.org/wiki/Nervio_craneal" },
+  { tipo: 'completar', pregunta: "¿Qué estructura ósea forma el techo de la cavidad orbitaria?", respuesta: "porción orbitaria del hueso frontal", wiki: "https://es.wikipedia.org/wiki/Hueso_frontal" },
+  { tipo: 'completar', pregunta: "¿Qué agujero del cráneo permite el paso del nervio mandibular?", respuesta: "agujero oval", wiki: "https://es.wikipedia.org/wiki/Agujero_oval" },
+  { tipo: 'completar', pregunta: "¿Qué surco del húmero aloja el nervio radial?", respuesta: "surco del nervio radial", wiki: "https://es.wikipedia.org/wiki/Húmero" },
+  { tipo: 'completar', pregunta: "¿Qué músculo se inserta en la espina de la escápula?", respuesta: "trapecio", wiki: "https://es.wikipedia.org/wiki/Músculo_trapecio" },
+  { tipo: 'completar', pregunta: "¿Qué estructura pasa por el canal inguinal en el varón?", respuesta: "cordón espermático", wiki: "https://es.wikipedia.org/wiki/Canal_inguinal" },
+  { tipo: 'completar', pregunta: "¿Qué músculo se origina en la espina ilíaca anterosuperior?", respuesta: "sartorio", wiki: "https://es.wikipedia.org/wiki/Músculo_sartorio" },
+  { tipo: 'completar', pregunta: "¿Qué estructura pasa por el agujero ciático mayor junto al nervio ciático?", respuesta: "arteria glútea inferior", wiki: "https://es.wikipedia.org/wiki/Agujero_ciático_mayor" },
+  { tipo: 'completar', pregunta: "¿Qué corte anatómico divide el cuerpo en mitades derecha e izquierda?", respuesta: "plano sagital", wiki: "https://es.wikipedia.org/wiki/Plano_sagital" },
+  { tipo: 'completar', pregunta: "¿Qué músculo se inserta en el trocánter mayor del fémur?", respuesta: "glúteo medio", wiki: "https://es.wikipedia.org/wiki/Músculo_glúteo_medio" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura conecta el estómago con el duodeno?", opciones: ["Cardias", "Fundus", "Píloro", "Cuerpo gástrico"], respuesta: 2, wiki: "https://es.wikipedia.org/wiki/Píloro" },
+  { tipo: 'seleccion', pregunta: "¿Qué hueso forma la parte anterior del paladar óseo?", opciones: ["Maxilar", "Palatino", "Vómer", "Etmoides"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Maxilar" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo se inserta en la espina ilíaca anterosuperior?", opciones: ["Recto femoral", "Sartorio", "Psoas mayor", "Tensor de la fascia lata"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Músculo_sartorio" },
+  { tipo: 'seleccion', pregunta: "¿Qué nervio atraviesa el conducto óptico?", opciones: ["Nervio óptico", "Nervio oculomotor", "Nervio troclear", "Nervio abducens"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Nervio_óptico" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura pasa por el agujero yugular?", opciones: ["Nervio vago", "Nervio facial", "Nervio hipogloso", "Nervio trigémino"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Agujero_yugular" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo se inserta en el trocánter mayor del fémur?", opciones: ["Glúteo mayor", "Glúteo medio", "Piriforme", "Iliaco"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Músculo_glúteo_medio" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura forma el techo de la órbita?", opciones: ["Hueso frontal", "Hueso esfenoides", "Hueso cigomático", "Hueso maxilar"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Hueso_frontal" },
+  { tipo: 'seleccion', pregunta: "¿Qué plano divide el cuerpo en mitades derecha e izquierda?", opciones: ["Coronal", "Transversal", "Sagital", "Oblicuo"], respuesta: 2, wiki: "https://es.wikipedia.org/wiki/Plano_sagital" },
+  { tipo: 'seleccion', pregunta: "¿Qué nervio pasa por el surco del nervio radial en el húmero?", opciones: ["Nervio radial", "Nervio mediano", "Nervio cubital", "Nervio musculocutáneo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Húmero" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura atraviesa el canal inguinal en el varón?", opciones: ["Cordón espermático", "Conducto deferente", "Arteria epigástrica inferior", "Vena femoral"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Canal_inguinal" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo se origina en la espina de la escápula?", opciones: ["Trapecio", "Dorsal ancho", "Deltoides", "Romboides mayor"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Músculo_trapecio" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura pasa por el agujero ciático mayor junto al nervio ciático?", opciones: ["Arteria glútea inferior", "Arteria femoral", "Arteria obturatriz", "Arteria pudenda interna"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Agujero_ciático_mayor" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo forma el piso de la pelvis?", opciones: ["Elevador del ano", "Obturador interno", "Piriforme", "Iliaco"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Músculo_elevador_del_ano" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura delimita el triángulo femoral?", opciones: ["Ligamento inguinal", "Sartorio", "Aductor largo", "Todas las anteriores"], respuesta: 3, wiki: "https://es.wikipedia.org/wiki/Triángulo_femoral" },
+  { tipo: 'seleccion', pregunta: "¿Qué nervio emerge por el agujero supraorbitario?", opciones: ["Nervio frontal", "Nervio supraorbitario", "Nervio cigomático", "Nervio óptico"], respuesta: 1, wiki: "https://es.wikipedia.org/wiki/Nervio_supraorbitario" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura pasa por el canal del carpo?", opciones: ["Nervio mediano", "Nervio cubital", "Arteria radial", "Tendón del palmar largo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Túnel_carpiano" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo se inserta en el tubérculo mayor del húmero?", opciones: ["Supraespinoso", "Subescapular", "Redondo mayor", "Deltoides"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Músculo_supraespinoso" },
+  { tipo: 'seleccion', pregunta: "¿Qué nervio pasa por el canal de Guyon?", opciones: ["Nervio cubital", "Nervio radial", "Nervio mediano", "Nervio musculocutáneo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Canal_de_Guyon" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura forma el límite posterior del triángulo submandibular?", opciones: ["Vientre posterior del digástrico", "Esternocleidomastoideo", "Omohioideo", "Milohioideo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Triángulo_submandibular" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo se inserta en la cara posterior del calcáneo mediante el tendón de Aquiles?", opciones: ["Gastrocnemio", "Sóleo", "Plantaris", "Todos los anteriores"], respuesta: 3, wiki: "https://es.wikipedia.org/wiki/Tendón_de_Aquiles" },
+  { tipo: 'seleccion', pregunta: "¿Qué nervio atraviesa el foramen redondo mayor?", opciones: ["Nervio maxilar", "Nervio mandibular", "Nervio oftálmico", "Nervio facial"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Nervio_maxilar" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo se origina en la fosa infraespinosa?", opciones: ["Infraespinoso", "Subescapular", "Supraespinoso", "Redondo menor"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Músculo_infraespinoso" },
+  { tipo: 'seleccion', pregunta: "¿Qué estructura pasa por el hiato esofágico del diafragma?", opciones: ["Esófago", "Aorta", "Vena cava inferior", "Nervio frénico"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Hiato_esofágico" },
+  { tipo: 'seleccion', pregunta: "¿Qué músculo se inserta en el borde medial de la escápula?", opciones: ["Romboides mayor", "Trapecio", "Deltoides", "Subescapular"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Músculo_romboides" },
+  { tipo: 'seleccion', pregunta: "¿Qué nervio pasa por el canal del epicóndilo medial del húmero?", opciones: ["Nervio cubital", "Nervio radial", "Nervio mediano", "Nervio musculocutáneo"], respuesta: 0, wiki: "https://es.wikipedia.org/wiki/Nervio_cubital" },
+  { tipo: 'arrastrar', pregunta: "Relaciona el hueso con su ubicación anatómica:", parejas: [
+    { concepto: "Fémur", opcion: "Miembro inferior" },
+    { concepto: "Húmero", opcion: "Miembro superior" },
+    { concepto: "Occipital", opcion: "Cráneo" }
+  ], wiki: "https://es.wikipedia.org/wiki/Hueso" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el agujero craneal con la estructura que lo atraviesa:", parejas: [
+    { concepto: "Agujero magno", opcion: "Bulbo raquídeo" },
+    { concepto: "Conducto óptico", opcion: "Nervio óptico" },
+    { concepto: "Agujero yugular", opcion: "Nervio vago" }
+  ], wiki: "https://es.wikipedia.org/wiki/Base_del_cráneo" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el músculo con su punto de inserción:", parejas: [
+    { concepto: "Trapecio", opcion: "Espina de la escápula" },
+    { concepto: "Glúteo medio", opcion: "Trocánter mayor" },
+    { concepto: "Sartorio", opcion: "Cara medial de la tibia" }
+  ], wiki: "https://es.wikipedia.org/wiki/Músculo" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el nervio con el canal o surco que atraviesa:", parejas: [
+    { concepto: "Nervio radial", opcion: "Surco del nervio radial" },
+    { concepto: "Nervio cubital", opcion: "Canal del epicóndilo medial" },
+    { concepto: "Nervio mediano", opcion: "Túnel carpiano" }
+  ], wiki: "https://es.wikipedia.org/wiki/Nervio" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el plano anatómico con su descripción:", parejas: [
+    { concepto: "Sagital", opcion: "Divide en derecha e izquierda" },
+    { concepto: "Coronal", opcion: "Divide en anterior y posterior" },
+    { concepto: "Transversal", opcion: "Divide en superior e inferior" }
+  ], wiki: "https://es.wikipedia.org/wiki/Plano_anatómico" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el paquete vasculonervioso con su trayecto anatómico:", parejas: [
+    { concepto: "Arteria femoral", opcion: "Triángulo femoral" },
+    { concepto: "Nervio ciático", opcion: "Agujero ciático mayor" },
+    { concepto: "Arteria braquial", opcion: "Surco bicipital medial" }
+  ], wiki: "https://es.wikipedia.org/wiki/Paquete_vasculonervioso" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el hueso con una estructura anatómica que contiene:", parejas: [
+    { concepto: "Temporal", opcion: "Conducto auditivo externo" },
+    { concepto: "Esfenoides", opcion: "Silla turca" },
+    { concepto: "Maxilar", opcion: "Seno maxilar" }
+  ], wiki: "https://es.wikipedia.org/wiki/Hueso" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el músculo con su función anatómica principal:", parejas: [
+    { concepto: "Diafragma", opcion: "Separación de cavidades torácica y abdominal" },
+    { concepto: "Elevador del ano", opcion: "Sostén del piso pélvico" },
+    { concepto: "Intercostales externos", opcion: "Elevación de las costillas" }
+  ], wiki: "https://es.wikipedia.org/wiki/Músculo" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona el nervio craneal con su número:", parejas: [
+    { concepto: "Nervio facial", opcion: "VII" },
+    { concepto: "Nervio trigémino", opcion: "V" },
+    { concepto: "Nervio hipogloso", opcion: "XII" }
+  ], wiki: "https://es.wikipedia.org/wiki/Nervio_craneal" },
+
+  { tipo: 'arrastrar', pregunta: "Relaciona la región anatómica con una estructura que contiene:", parejas: [
+    { concepto: "Fosa infratemporal", opcion: "Músculo pterigoideo lateral" },
+    { concepto: "Triángulo submandibular", opcion: "Glándula submandibular" },
+    { concepto: "Fosa poplítea", opcion: "Nervio tibial" }
+  ], wiki: "https://es.wikipedia.org/wiki/Región_anatómica" },
+{ tipo: 'vf', pregunta: "El píloro comunica el estómago con el duodeno.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Píloro" },
+  { tipo: 'vf', pregunta: "El corazón humano posee dos aurículas y dos ventrículos.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Corazón" },
+  { tipo: 'vf', pregunta: "El músculo liso se encuentra en las paredes de órganos huecos y es involuntario.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Músculo_liso" },
+  { tipo: 'vf', pregunta: "La tráquea se localiza anterior al esófago en el cuello.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Tráquea" },
+  { tipo: 'vf', pregunta: "La córnea es una estructura transparente y avascular del ojo.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Córnea" },
+  { tipo: 'vf', pregunta: "El riñón se ubica en la región retroperitoneal del abdomen.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Riñón" },
+  { tipo: 'vf', pregunta: "El hígado está situado en el hipocondrio derecho y parte del epigastrio.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Hígado" },
+  { tipo: 'vf', pregunta: "La médula ósea roja es el sitio principal de hematopoyesis en adultos.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Médula_ósea" },
+  { tipo: 'vf', pregunta: "El intestino delgado mide aproximadamente 6 metros en adultos.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Intestino_delgado" },
+  { tipo: 'vf', pregunta: "El páncreas se localiza transversalmente por detrás del estómago.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Páncreas" },
+  { tipo: 'vf', pregunta: "La vesícula biliar se encuentra adherida a la cara inferior del hígado.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Vesícula_biliar" },
+  { tipo: 'vf', pregunta: "El bazo se localiza en el hipocondrio izquierdo, entre el diafragma y el estómago.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Bazo" },
+  { tipo: 'vf', pregunta: "El cráneo está compuesto por huesos planos unidos por suturas.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Suturas_del_cráneo" },
+  { tipo: 'vf', pregunta: "El sistema esquelético adulto está formado por 206 huesos.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sistema_esquelético_humano" },
+  { tipo: 'vf', pregunta: "El líquido sinovial se encuentra en las cavidades articulares sinoviales.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Líquido_sinovial" },
+  { tipo: 'vf', pregunta: "La médula espinal está contenida dentro del conducto vertebral.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Médula_espinal" },
+  { tipo: 'vf', pregunta: "El sistema nervioso central está compuesto por el encéfalo y la médula espinal.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Sistema_nervioso_central" },
+  { tipo: 'vf', pregunta: "El líquido cefalorraquídeo circula por el espacio subaracnoideo.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Líquido_cefalorraquídeo" },
+  { tipo: 'vf', pregunta: "El nervio óptico atraviesa el conducto óptico del esfenoides.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Nervio_óptico" },
+  { tipo: 'vf', pregunta: "El hueso hioides no se articula con ningún otro hueso.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Hueso_hioides" },
+  { tipo: 'vf', pregunta: "El músculo diafragma separa la cavidad torácica de la abdominal.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Diafragma_(anatomía)" },
+  { tipo: 'vf', pregunta: "El canal inguinal permite el paso del cordón espermático en el varón.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Canal_inguinal" },
+  { tipo: 'vf', pregunta: "El nervio cubital pasa por detrás del epicóndilo medial del húmero.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Nervio_cubital" },
+  { tipo: 'vf', pregunta: "El músculo supraespinoso se origina en la fosa supraespinosa de la escápula.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Músculo_supraespinoso" },
+  { tipo: 'vf', pregunta: "El agujero oval del esfenoides permite el paso del nervio mandibular.", respuesta: true, wiki: "https://es.wikipedia.org/wiki/Agujero_oval" }
 ];
 
 // --- Feedback y validación de respuestas ---
