@@ -1,3 +1,5 @@
+// Sonido pop para siguiente pregunta
+const audioPop = new Audio('../sonidos/pop.mp3');
 // Sonidos de feedback (archivos locales en carpeta sonidos)
 const audioCorrecto = new Audio('../sonidos/correcto.mp3');
 const audioIncorrecto = new Audio('../sonidos/incorrecto.mp3');
@@ -416,6 +418,7 @@ function mostrarPregunta() {
             btnSiguiente.textContent = preguntaActual + 1 < LIMITE_PREGUNTAS ? 'Siguiente pregunta' : 'Ver resultado';
             btnSiguiente.className = 'btn-siguiente';
             btnSiguiente.onclick = function() {
+                try { audioPop.currentTime = 0; audioPop.play(); } catch(e){}
                 preguntaActual++;
                 mostrarPregunta();
             };
@@ -458,6 +461,7 @@ function mostrarPregunta() {
             btnSiguiente.textContent = preguntaActual + 1 < LIMITE_PREGUNTAS ? 'Siguiente pregunta' : 'Ver resultado';
             btnSiguiente.className = 'btn-siguiente';
             btnSiguiente.onclick = function() {
+                try { audioPop.currentTime = 0; audioPop.play(); } catch(e){}
                 preguntaActual++;
                 mostrarPregunta();
             };
