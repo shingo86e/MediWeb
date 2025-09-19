@@ -405,7 +405,7 @@ function mostrarPregunta() {
                 });
                 respuestaMostrada += '</ul>';
                 feedbackDiv.innerHTML = `<span style="color:red;font-weight:bold">Incorrecto, la respuesta correcta es:</span> ${respuestaMostrada}` +
-                    '<br><button onclick="window.open(\'' + ejercicio.wiki + '\', \'_blank\')" style="margin-top:8px">Estudiar en Wikipedia</button>';
+                    '<br><button class="btn-wikipedia" onclick="window.open(\'' + ejercicio.wiki + '\', \'_blank\')">Estudiar en Wikipedia</button>';
             }
             inputElem.appendChild(feedbackDiv);
             btnArrastrar.disabled = true;
