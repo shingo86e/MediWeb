@@ -28,6 +28,28 @@
             </div>
         </section>
     </main>
-    <script type="module" src="../js/leccion.js"></script>
+        <script>
+        // Detecta la materia por parámetro en la URL y carga el JS correspondiente como script clásico
+        const params = new URLSearchParams(window.location.search);
+        const materia = params.get('materia') || 'Anatomía';
+        let src = '../js/leccionAnatomia.js';
+        switch(materia) {
+            case 'Anatomía': src = '../js/leccionAnatomia.js'; break;
+            case 'Bioquímica': src = '../js/leccionBioquimica.js'; break;
+            case 'Biología': src = '../js/leccionBiologia.js'; break;
+            case 'Biofísica': src = '../js/leccionBiofisica.js'; break;
+            case 'Histología': src = '../js/leccionHistologia.js'; break;
+            case 'Fisiología': src = '../js/leccionFisiologia.js'; break;
+            case 'Microbiología': src = '../js/leccionMicrobiologia.js'; break;
+            case 'Parasitología': src = '../js/leccionParasitologia.js'; break;
+            case 'Cardiología': src = '../js/leccionCardiologia.js'; break;
+            case 'Neurología': src = '../js/leccionNeurologia.js'; break;
+            case 'Pediatría': src = '../js/leccionPediatria.js'; break;
+            case 'Farmacología': src = '../js/leccionFarmacologia.js'; break;
+        }
+        const script = document.createElement('script');
+        script.src = src;
+        document.body.appendChild(script);
+        </script>
 </body>
 </html>
