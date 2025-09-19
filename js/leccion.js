@@ -396,6 +396,7 @@ function mostrarPregunta() {
                 feedbackDiv = document.createElement('div');
                 feedbackDiv.className = 'feedback-quiz';
                 feedbackDiv.innerHTML = '<span style="color:green;font-weight:bold">¡Correcto!</span>';
+                try { audioCorrecto.currentTime = 0; audioCorrecto.play(); } catch(e){}
             } else {
                 feedbackDiv = document.createElement('div');
                 feedbackDiv.className = 'feedback-quiz';
@@ -406,6 +407,7 @@ function mostrarPregunta() {
                 respuestaMostrada += '</ul>';
                 feedbackDiv.innerHTML = `<span style="color:red;font-weight:bold">Incorrecto, la respuesta correcta es:</span> ${respuestaMostrada}` +
                     '<br><button class="btn-wikipedia" onclick="window.open(\'' + ejercicio.wiki + '\', \'_blank\')">Estudiar en Wikipedia</button>';
+                try { audioIncorrecto.currentTime = 0; audioIncorrecto.play(); } catch(e){}
             }
             inputElem.appendChild(feedbackDiv);
             btnArrastrar.disabled = true;
