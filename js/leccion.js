@@ -414,7 +414,7 @@ function mostrarPregunta() {
             // Botón siguiente pregunta
             const btnSiguiente = document.createElement('button');
             btnSiguiente.textContent = preguntaActual + 1 < LIMITE_PREGUNTAS ? 'Siguiente pregunta' : 'Ver resultado';
-            btnSiguiente.style.marginLeft = '12px';
+            btnSiguiente.className = 'btn-siguiente';
             btnSiguiente.onclick = function() {
                 preguntaActual++;
                 mostrarPregunta();
@@ -455,7 +455,7 @@ function mostrarPregunta() {
             // Botón siguiente pregunta
             const btnSiguiente = document.createElement('button');
             btnSiguiente.textContent = preguntaActual + 1 < LIMITE_PREGUNTAS ? 'Siguiente pregunta' : 'Ver resultado';
-            btnSiguiente.style.marginLeft = '12px';
+            btnSiguiente.className = 'btn-siguiente';
             btnSiguiente.onclick = function() {
                 preguntaActual++;
                 mostrarPregunta();
